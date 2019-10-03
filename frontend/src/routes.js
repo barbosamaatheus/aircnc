@@ -6,11 +6,13 @@ import Dashboard from "./pages/Dashboard";
 import New from "./pages/New";
 
 export default function Routes() {
-  <BrowserRouter>
-    <Switch>
-        <Route path="/" exact component={Login}/>
-        <Route path="/dashboard" component={Dashboard}/>
-        <Route path="/new" component={New}/>
-    </Switch>
-  </BrowserRouter>;
-}
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={Login} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/new" component={New} />
+      </Switch>
+    </BrowserRouter>
+  );
+};
