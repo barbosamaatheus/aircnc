@@ -1,5 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import api from "../../services/api";
 
-export default function Dashboard(){
-    return <div> </div>
+import "./styles.css";
+
+export default function Dashboard() {
+  const [spots, setSpots] = useState([]);
+
+  useEffect(() => {
+    async function loadSpots() {
+      const user_id = localStorage.getItem("user");
+      const res = await api.get("dashboard", {
+        headers: { user_id }
+      });
+
+      setSpots(res.data);
+    }
+    loadSpots();
+  }, []);
+  return (
+    <>
+      <ul className="spot-list">
+        {spots.map(spot => (
+          <li key={spot._id}>
+            <header style={{ backgroundImage: `url(${spot.thumbnail_url})` }} />
+            <strong>{spot.company}</strong>
+            <span>{spot.price ? `R$: ${spot.price}` : "GRATUITO"}</span>
+          </li>
+        ))}
+      </ul>
+      <Link to="/new">
+        <button className="btn">Cadastrar novo spot</button>
+      </Link>
+    </>
+  );
 }
