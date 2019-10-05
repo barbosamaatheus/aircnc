@@ -5,7 +5,7 @@ module.exports = {
     const { booking_id } = req.params;
 
     const booking = await Booking.findById(booking_id).populate("spot");
-    booking.aproved = true;
+    booking.approved = true;
     await booking.save();
 
     const bookingUserSocket = req.connectedUsers[booking.user];
