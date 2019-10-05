@@ -11,7 +11,7 @@ import { withNavigation } from "react-navigation";
 
 import api from "../services/api";
 
-function SpotList({ tech }) {
+function SpotList({ tech, navigation }) {
   const [spots, setSpots] = useState([]);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function SpotList({ tech }) {
         keyExtractor={item => spots._id}
         horizontal
         showsHorizontalScrollIndicator={false}
-        renderItem={({ item }) => {
+        renderItem={ ({item}) => (
           <View style={styles.listItem}>
             <Image
               source={{ uri: item.thumbnail_url }}
@@ -55,8 +55,8 @@ function SpotList({ tech }) {
               onPress={() => handleNavigate(item._id)}>
               <Text style={styles.buttonText}> SOLICITAR RESERVA</Text>
             </TouchableOpacity>
-          </View>;
-        }}
+          </View>
+        )}
       />
     </View>
   );

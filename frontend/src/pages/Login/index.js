@@ -11,7 +11,7 @@ export default function Login({ history }) {
       const { _id } = res.data;
 
       localStorage.setItem("user", _id);
-    history.push('/deshboard');
+    history.push('/dashboard');
     }       
   }
 

@@ -10,7 +10,7 @@ export default function Dashboard() {
   useEffect(() => {
     async function loadSpots() {
       const user_id = localStorage.getItem("user");
-      const res = await api.get("dashboard", {
+      const res = await api.get("/dashboard", {
         headers: { user_id }
       });
 
